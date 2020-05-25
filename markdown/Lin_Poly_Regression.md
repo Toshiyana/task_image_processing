@@ -277,6 +277,13 @@ class PolynomialRegression:
         lr = LinearRegression() # 線形回帰を利用
         lr.fit(matrix, y)
         self.weight = lr.weight
+        
+    def predict(self, x):
+        r = 0
+        for i in range(self.degree + 1):
+            r += x**i * self.weight[i]
+            
+        return r
     
 if __name__=="__main__":
     # 適当な学習データを生成

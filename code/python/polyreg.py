@@ -1,5 +1,3 @@
-from linreg import LinearRegression
-
 class PolynomialRegression:
     def __init__(self, degree):
         self.degree = degree
@@ -15,3 +13,10 @@ class PolynomialRegression:
         lr = LinearRegression() # 線形回帰を利用
         lr.fit(matrix, y)
         self.weight = lr.weight
+        
+    def predict(self, x):
+        r = 0
+        for i in range(self.degree + 1):
+            r += x**i * self.weight[i]
+            
+        return r
