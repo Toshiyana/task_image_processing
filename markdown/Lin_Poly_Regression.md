@@ -26,16 +26,20 @@ $$
 また、$\frac{\partial E}{\partial b} = 0$より
 
 $$
-\sum_{i=1}^{n} (ax_i + b - y_i) = \sum_{i=1}^{n} ax_i + nb - \sum_{i=1}^{n} y_i = 0 \\
+\sum_{i=1}^{n} (ax_i + b - y_i) = \sum_{i=1}^{n} ax_i + nb - \sum_{i=1}^{n} y_i = 0
+$$
+$$
 \therefore b = \frac{1}{n} \sum_{i=1}^{n} (y_i - ax_i) \tag{2} 
 $$
 
 式(1)に式(2)を代入して計算していくと
 
 $$
-\sum_{i=1}^{n} x_i(ax_i + b - y_i) = a \sum_{i=1}^{n} x_i^2 + b \sum_{i=1}^{n} x_i - \sum_{i=1}^{n} x_i y_i \\
-= \dots \\
-= a \Biggr[\sum_{i=1}^{n} x_i^2 - \frac{1}{n} \Biggr(\sum_{i=1}^{n} x_i \Biggr)^2 \Biggr] + \frac{1}{n} \sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i - \sum_{i=1}^{n} x_i y_i \\
+\begin{aligned}
+\sum_{i=1}^{n} x_i(ax_i + b - y_i) &= a \sum_{i=1}^{n} x_i^2 + b \sum_{i=1}^{n} x_i - \sum_{i=1}^{n} x_i y_i \\\\
+&= \dots \\\\
+&= a \Biggr[\sum_{i=1}^{n} x_i^2 - \frac{1}{n} \Biggr(\sum_{i=1}^{n} x_i \Biggr)^2 \Biggr] + \frac{1}{n} \sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i - \sum_{i=1}^{n} x_i y_i \\\\
+\end{aligned}
 $$
 
 上式 = 0より、aは
@@ -81,20 +85,20 @@ if __name__=="__main__":
 
 ### 理論
 まず、説明変数がd個ある時の行列$\boldsymbol{X}$は
+
 $$
 \boldsymbol{X}=
 \begin{pmatrix}
-\boldsymbol{x_{1}}^T\\
-\boldsymbol{x_{2}}^T\\
-\vdots\\
-\boldsymbol{x_{n}}^T\\
+\boldsymbol{x_{1}}^T \\\\
+\boldsymbol{x_{2}}^T \\\\
+\vdots \\\\
+\boldsymbol{x_{n}}^T \\\\
 \end{pmatrix}
-=
-\begin{pmatrix}
-x_{11} & x_{12} & \cdots & x_{1d}\\
-x_{21} & x_{22} & \cdots & x_{2d}\\
-\vdots & \vdots & \ddots & \vdots \\
-x_{n1} & x_{n2} & \cdots & x_{nd}\\
+= \begin{pmatrix}
+x_{11} & x_{12} & \cdots & x_{1d} \\\\
+x_{21} & x_{22} & \cdots & x_{2d} \\\\
+\vdots & \vdots & \ddots & \vdots \\\\
+x_{n1} & x_{n2} & \cdots & x_{nd} \\\\
 \end{pmatrix}
 $$
 
@@ -103,10 +107,10 @@ $$
 $$
 \boldsymbol{\tilde{X}}=
 \begin{pmatrix}
-1 & x_{11} & x_{12} & \cdots & x_{1d}\\
-1 & x_{21} & x_{22} & \cdots & x_{2d}\\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & x_{n1} & x_{n2} & \cdots & x_{nd}\\
+1 & x_{11} & x_{12} & \cdots & x_{1d} \\\\
+1 & x_{21} & x_{22} & \cdots & x_{2d} \\\\
+\vdots & \vdots & \vdots & \ddots & \vdots \\\\
+1 & x_{n1} & x_{n2} & \cdots & x_{nd} \\\\
 \end{pmatrix}
 $$
 
@@ -125,9 +129,11 @@ $$
 よって、最小二乗法より、次式を最小化するようなパラメータ$\omega$を求めればよい。
 
 $$
-E(\boldsymbol{\omega}) = || \boldsymbol{y} - \boldsymbol{\tilde{X}} \boldsymbol{\omega} ||^2 \\
-= (\boldsymbol{y} - \boldsymbol{\tilde{X}\omega})^T (\boldsymbol{y} - \boldsymbol{\tilde{X}\omega}) \\
-= \boldsymbol{y}^T\boldsymbol{y} - \boldsymbol{\omega}^T \boldsymbol{\tilde{X}}^T \boldsymbol{y} - \boldsymbol{y}^T \boldsymbol{\tilde{X}} \boldsymbol{\omega} + \boldsymbol{\omega}^T \boldsymbol{\tilde{X}}^T \boldsymbol{\tilde{X}} \boldsymbol{\omega}
+\begin{aligned}
+E(\boldsymbol{\omega}) &= || \boldsymbol{y} - \boldsymbol{\tilde{X}} \boldsymbol{\omega} ||^2 \\\\
+&= (\boldsymbol{y} - \boldsymbol{\tilde{X}\omega})^T (\boldsymbol{y} - \boldsymbol{\tilde{X}\omega}) \\\\
+&= \boldsymbol{y}^T\boldsymbol{y} - \boldsymbol{\omega}^T \boldsymbol{\tilde{X}}^T \boldsymbol{y} - \boldsymbol{y}^T \boldsymbol{\tilde{X}} \boldsymbol{\omega} + \boldsymbol{\omega}^T \boldsymbol{\tilde{X}}^T \boldsymbol{\tilde{X}} \boldsymbol{\omega}
+\end{aligned}
 $$
 
 上式の勾配$\nabla E(\boldsymbol{\omega}) = 0$ の時の$\omega$を求めればよいので、
@@ -139,7 +145,7 @@ $$
 よって、
 
 $$
-\boldsymbol{\tilde{X} y} = \boldsymbol{\tilde{X}}^T \boldsymbol{\tilde{X} \omega} \\
+\boldsymbol{\tilde{X} y} = \boldsymbol{\tilde{X}}^T \boldsymbol{\tilde{X} \omega} \\\\
 \boldsymbol{\omega} = (\boldsymbol{\tilde{X}}^T \boldsymbol{\tilde{X}})^{-1} \boldsymbol{\tilde{X}}^T \boldsymbol{y}
 $$
 
@@ -200,6 +206,7 @@ if __name__=="__main__":
 
 ## 理論
 説明については、簡単のため、学習データの説明変数$X$は一つ（一次元）と仮定する。この時、多項式の次数をdとすると、予測値$\tilde{y}$は
+
 $$
 \tilde{y} = \omega_0 + \omega_1 x + \omega_2 x^2 + \dots + \omega_d x^d \tag{5}
 $$
@@ -209,42 +216,40 @@ $$
 $$
 \boldsymbol{M}=
 \begin{pmatrix}
-1 & x_{1} & x_{1}^2 & \cdots & x_{1}^d\\
-1 & x_{2} & x_{2}^2 & \cdots & x_{2}^d\\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & x_{n} & x_{n}^2 & \cdots & x_{n}^d\\
+1 & x_{1} & x_{1}^2 & \cdots & x_{1}^d \\\\
+1 & x_{2} & x_{2}^2 & \cdots & x_{2}^d \\\\
+\vdots & \vdots & \vdots & \ddots & \vdots \\\\
+1 & x_{n} & x_{n}^2 & \cdots & x_{n}^d \\\\
 \end{pmatrix}
 $$
 
 よって、予測値$\tilde{y}$は次のように表すことができ、
 
 $$
-\boldsymbol{\tilde{y}}
-=
+\boldsymbol{\tilde{y}}=
 \begin{pmatrix}
-\omega_0 + \omega_1 x_1 + \omega_2 x_1^2 + \cdots + \omega_d x_{1}^d\\
-\omega_0 + \omega_1 x_2 + \omega_2 x_2^2 + \cdots + \omega_d x_{2}^d\\
-\vdots \\
-\omega_0 + \omega_1 x_n + \omega_2 x_n^2 + \cdots + \omega_d x_{n}^d\\
+\omega_0 + \omega_1 x_1 + \omega_2 x_1^2 + \cdots + \omega_d x_{1}^d \\\\
+\omega_0 + \omega_1 x_2 + \omega_2 x_2^2 + \cdots + \omega_d x_{2}^d \\\\
+\vdots \\\\
+\omega_0 + \omega_1 x_n + \omega_2 x_n^2 + \cdots + \omega_d x_{n}^d \\\\
 \end{pmatrix}
-=
-\begin{pmatrix}
-1 & x_{1} & x_{1}^2 & \cdots & x_{1}^d\\
-1 & x_{2} & x_{2}^2 & \cdots & x_{2}^d\\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & x_{n} & x_{n}^2 & \cdots & x_{n}^d\\
+= \begin{pmatrix}
+1 & x_{1} & x_{1}^2 & \cdots & x_{1}^d \\\\
+1 & x_{2} & x_{2}^2 & \cdots & x_{2}^d \\\\
+\vdots & \vdots & \vdots & \ddots & \vdots \\\\
+1 & x_{n} & x_{n}^2 & \cdots & x_{n}^d \\\\
 \end{pmatrix}
 \begin{pmatrix}
-\omega_0\\
-\omega_1\\
-\vdots\\
-\omega_d\\
+\omega_0 \\\\
+\omega_1 \\\\
+\vdots \\\\
+\omega_d \\\\
 \end{pmatrix}
-=
-\boldsymbol{M \omega}
+= \boldsymbol{M \omega}
 $$
 
 上式を用いて、線形回帰と同様、最小二乗法によりパラメータ$\omega$を求めればよい。
+
 $$
 min|| \tilde{y}(x, \omega) - y ||^2
 $$
