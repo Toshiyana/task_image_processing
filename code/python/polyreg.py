@@ -1,3 +1,7 @@
+import numpy as np
+from linreg import LinearRegression
+
+# 説明変数が一つの時のみ
 class PolynomialRegression:
     def __init__(self, degree):
         self.degree = degree
@@ -9,9 +13,14 @@ class PolynomialRegression:
         for i in range(1, self.degree + 1):
             x_pow.append(xx**i)
         
-        matrix = np.concatenate(x_pow, axis = 1)
+        mat = np.concatenate(x_pow, axis = 1) # ベクトルを横に繋いだ行列の生成
+
+        # print(xx)
+        # print(x_pow)
+        # print(mat)
+
         lr = LinearRegression() # 線形回帰を利用
-        lr.fit(matrix, y)
+        lr.fit(mat, y)
         self.weight = lr.weight
         
     def predict(self, x):

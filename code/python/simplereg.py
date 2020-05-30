@@ -1,3 +1,5 @@
+import numpy as np
+
 class SimpleRegression:
     def __init__(self):
         self.intercept = None # 切片
